@@ -1,0 +1,149 @@
+{
+    "[ID ECN 1]": {
+        "CFN": "####",
+        "state": "None / In progress / Completed",
+        "completedPages": 0,
+        "adressSection": {
+            "Q1": "",
+            "Q2": "",
+            "Q3": ""
+        },
+        "personSection": {
+            "Page1": {
+                "Q1": "",
+                "Q2": "",
+                "Q3": ""
+            },
+            "Page2": {
+                "Q4": "",
+                "Q5": "",
+                "Q6": ""
+            },
+            "Page3": {
+                "Q7": "",
+                "Q8": "",
+                "Q9": ""
+            }
+        },
+        "dwellingSection": {
+            "Page1": {
+                "Q1": "",
+                "Q2": "",
+                "Q3": ""
+            },
+            "Page2": {
+                "Q4": "",
+                "Q5": "",
+                "Q6": ""
+            },
+            "Page3": {
+                "Q7": "",
+                "Q8": "",
+                "Q9": ""
+            }
+        },
+        "feedbackSection": {
+            "Q1": "",
+            "Q2": "",
+            "Q3": ""
+        }
+    },
+    "[ID ECN 2]": {
+        "CFN": "####",
+        "state": "None / In progress / Completed",
+        "completedPages": 0,
+        "adressSection": {
+            "Q1": "",
+            "Q2": "",
+            "Q3": ""
+        },
+        "personSection": {
+            "Page1": {
+                "Q1": "",
+                "Q2": "",
+                "Q3": ""
+            },
+            "Page2": {
+                "Q4": "",
+                "Q5": "",
+                "Q6": ""
+            },
+            "Page3": {
+                "Q7": "",
+                "Q8": "",
+                "Q9": ""
+            }
+        },
+        "dwellingSection": {
+            "Page1": {
+                "Q1": "",
+                "Q2": "",
+                "Q3": ""
+            },
+            "Page2": {
+                "Q4": "",
+                "Q5": "",
+                "Q6": ""
+            },
+            "Page3": {
+                "Q7": "",
+                "Q8": "",
+                "Q9": ""
+            }
+        },
+        "feedbackSection": {
+            "Q1": "",
+            "Q2": "",
+            "Q3": ""
+        }
+    },
+    "[ID ECN 3]": {
+        "CFN": "####",
+        "state": "None / In progress / Completed",
+        "completedPages": 0,
+        "adressSection": {
+            "Q1": "",
+            "Q2": "",
+            "Q3": ""
+        },
+        "personSection": {
+            "Page1": {
+                "Q1": "",
+                "Q2": "",
+                "Q3": ""
+            },
+            "Page2": {
+                "Q4": "",
+                "Q5": "",
+                "Q6": ""
+            },
+            "Page3": {
+                "Q7": "",
+                "Q8": "",
+                "Q9": ""
+            }
+        },
+        "dwellingSection": {
+            "Page1": {
+                "Q1": "",
+                "Q2": "",
+                "Q3": ""
+            },
+            "Page2": {
+                "Q4": "",
+                "Q5": "",
+                "Q6": ""
+            },
+            "Page3": {
+                "Q7": "",
+                "Q8": "",
+                "Q9": ""
+            }
+        },
+        "feedbackSection": {
+            "Q1": "",
+            "Q2": "",
+            "Q3": ""
+        }
+    }
+}
