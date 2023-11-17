@@ -1,0 +1,53 @@
+{
+    "[ID zona/collector 1 === Codigo postal]": {
+        "[ID casa1 === CFN]": {
+            "direction": "",
+            "state": true,
+            "ECN": "####"
+        },
+        "[ID casa2 === CFN]": {
+            "direction": "",
+            "state": true,
+            "ECN": "####"
+        },
+        "[ID casa3 === CFN]": {
+            "direction": "",
+            "state": true,
+            "ECN": "####"
+        }
+    },
+    "[ID zona/collector 2 === Codigo postal]": {
+        "[ID casa1 === CFN]": {
+            "direction": "",
+            "state": true,
+            "ECN": "####"
+        },
+        "[ID casa2 === CFN]": {
+            "direction": "",
+            "state": true,
+            "ECN": "####"
+        },
+        "[ID casa3 === CFN]": {
+            "direction": "",
+            "state": true,
+            "ECN": "####"
+        }
+    },
+    "[ID zona/collector 3 === Codigo postal]": {
+        "[ID casa1 === CFN]": {
+            "direction": "",
+            "state": true,
+            "ECN": "####"
+        },
+        "[ID casa2 === CFN]": {
+            "direction": "",
+            "state": true,
+            "ECN": "####"
+        },
+        "[ID casa3 === CFN]": {
+            "direction": "",
+            "state": true,
+            "ECN": "####"
+        }
+    }
+}
