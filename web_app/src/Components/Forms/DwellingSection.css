@@ -1,0 +1,108 @@
+.dwelling-container {
+    padding-top: 200px;
+    padding-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f4f8;
+    font-family: 'Mulish' sans-serif;
+    overflow: auto;
+}
+
+.dwelling-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px; 
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    font-family: 'Mulish', sans-serif;
+    font-weight: bolder;
+    margin-bottom: 0.5rem;
+}
+
+.input-group input {
+    border-radius: 15px !important;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem; 
+}
+
+.round-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #212529;
+    background-color: transparent;
+    border: 2px solid #212529;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+}
+
+.round-button:hover {
+    background-color: #212529;
+    color: white;
+}
+
+.dwelling-container h2 {
+    font-weight: bolder;
+    margin-bottom: 50px;
+    display: block;
+}
+
+.pagination {
+    font-family: 'Mulish', sans-serif;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.pagination a {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.pagination .active a {
+    background-color: #2125293b;
+}
+
+.pagination .previous,
+.pagination .next {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+.pagination .previous a,
+.pagination .next a {
+    color: #212529;
+}
