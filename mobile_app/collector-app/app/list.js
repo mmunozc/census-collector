@@ -6,38 +6,15 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { useRouter } from "expo-router";
-import { Feather } from "@expo/vector-icons";
-import * as Localization from "expo-localization";
-import ChatComponent from "../components/chat/ChatComponent";
 import DwellingComponent from "../components/DwellingComponent";
 import { styles } from "../utils/styles";
-import Menu from "../components/Menu/Menu";
 import { getData, fetchDataAndStoreLocally } from "../database/localdatabase";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as constantes from "../constants";
-
-const translations = {
-  "en-US": {
-    search: "Search",
-    searchPlaceholder: "Search",
-    noChats: "No chats created!",
-  },
-  "es-ES": {
-    search: "Buscar",
-    searchPlaceholder: "Buscar",
-    noChats: "No hay chats creados!",
-  },
-};
 
 const List = () => {
   const router = useRouter();
   const [data, setData] = useState([]);
   const [user, setUser] = useState("");
-  const chatIdentifiers = [];
-  const locale = Localization.locale;
-  const language = locale.split("-")[0];
-  const t =
-    translations[locale] || translations[language] || translations["es-ES"];
 
   useLayoutEffect(() => {
     const values = async () => {
@@ -91,7 +68,6 @@ const List = () => {
           </View>
         )}
       </View>
-      <Menu />
     </SafeAreaView>
   );
 };
