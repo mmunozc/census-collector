@@ -21,6 +21,7 @@ def graph():
         plt.tight_layout()
         plt.show()
     
+    
     def pieplot(count_answers, title):
         plt.figure(figsize=(8,8))
         plt.pie(count_answers, labels=count_answers.index, autopct='%1.1f%%', startangle=140, colors=['skyblue', 'lightgreen'])
@@ -29,17 +30,23 @@ def graph():
         plt.tight_layout()
         plt.show()
 
+
     def graph_AdressSection():
         data_adressSection = pd.read_excel(excel_file, sheet_name=adressSectionSheet)
         column_q3 = data_adressSection['Q3']
         count_column = column_q3.value_counts().sort_index()
         barplot(count_column, 'Cantidad de Personas que viven en el Hogar', 'Cantidad de Personas', 'Frecuencia')
 
+
     def graph_PersonSection():
         data_personSection = pd.read_excel(excel_file, sheet_name=personSectionSheet)
-        column_q1 = data_personSection['Q1']
-        count_column_q1 = column_q1.value_counts()
-        pieplot(count_column_q1, 'Q1')
+
+        for i in range(1,22):
+            column = data_personSection[f'Q{i}']
+            count_column = column.value_counts()
+            pieplot(count_column, f'Person Section Q{i}')
+
+        
 
     
     def graph_dwellingSection():
