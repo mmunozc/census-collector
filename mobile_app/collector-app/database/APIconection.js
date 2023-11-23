@@ -55,17 +55,63 @@ const StartConection = async () => {
         }
     };
 }
+const APIurl = "myapi.com";
+
+async function fetchDataFromApi(apiUrl) {
+    try {
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data. Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Received data:", data);
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error.message);
+    }
+}
+
+async function postDataToApi(apiUrl, content) {
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: content,
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data. Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Received data:", data);
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error.message);
+    }
+}
 
 const GetZoneData = async (user) => {
     return mainJson[user];
+    const data = await fetchDataFromApi(APIurl + "/zonas/" + user + "/");
 }
 
 const SendUpdate = async (user, item) => {
     mainJson[user][item.CFN] = item;
+    const data = await postDataToApi(APIurl + "/" + user + "/", item);
 }
 
-const ValidateUser = async (user) => {
-    return mainJson.hasOwnProperty(user);
+const ValidateUser = async (user, pass) => {
+    const credentials = {
+        "usuario": user,
+        "password": pass,
+    };
+    const token = await postDataToApi(APIurl + "/collectors/login", credentials);
+    return token;
 }
 
 export { GetZoneData, ValidateUser, SendUpdate, StartConection };

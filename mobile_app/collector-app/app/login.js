@@ -17,11 +17,13 @@ import { ValidateUser, StartConection } from "../database/APIconection";
 const Login = () => {
   const router = useRouter();
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const storeUsername = async (user) => {
+  const storeUsername = async (user, token) => {
     try {
       await AsyncStorage.setItem("username", user);
+      await AsyncStorage.setItem("token", token);
       router.push("/list");
     } catch (e) {
       console.error("Error al guardar el usuario");
@@ -29,11 +31,12 @@ const Login = () => {
   };
 
   const handleSignIn = async () => {
-    if (await ValidateUser(username)) {
+    const token = await ValidateUser(username, password);
+    if (token) {
       //console.log("user", username);
-      storeUsername(username);
+      storeUsername(username, token);
     } else {
-      setError("Código erroneo"); // Set error message
+      setError("Usuario o contraseña equivocados"); // Set error message
     }
   };
 
@@ -67,7 +70,16 @@ const Login = () => {
               onChangeText={(value) => setUsername(value)}
             />
           </View>
-
+          <View style={styles.inputWrapper}>
+            <Icon name="lock" size={24} color="#ccc" style={styles.icon} />
+            <TextInput
+              autoCorrect={false}
+              secureTextEntry={true} // Password input
+              placeholder={t.passwordPlaceholder}
+              style={styles.logininput}
+              onChangeText={(value) => setPassword(value)}
+            />
+          </View>
           <Pressable onPress={handleSignIn} style={styles.loginbutton}>
             <View>
               <Text style={styles.loginbuttonText}>{"Entrar"}</Text>
