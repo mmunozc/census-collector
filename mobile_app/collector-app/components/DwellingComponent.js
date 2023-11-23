@@ -11,7 +11,7 @@ const DwellingComponent = ({ item, user }) => {
   const handlePress = async () => {
     item.state = !item.state;
     setState(item.state);
-    SendUpdate(item.CFN, item.state);
+    SendUpdate(user, item.CFN, item.state);
   };
 
   return (

@@ -29,7 +29,7 @@ const List = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       getDwellings(user);
-    }, 500);
+    }, 200);
     return () => clearInterval(intervalId);
   }, [getDwellings]);
 

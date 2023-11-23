@@ -121,8 +121,8 @@ const GetZoneData = async (user) => {
     return data;
 }
 
-const SendUpdate = async (dwelling, state) => {
-    mainJson[user][item.CFN].state = state;
+const SendUpdate = async (user, CFN, state) => {
+    mainJson[user][CFN].state = state;
     return;
     const token = await getData("accessToken");
     const content = {

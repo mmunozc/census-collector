@@ -53,7 +53,7 @@ const Login = () => {
             <Icon name="user" size={24} color="#ccc" style={styles.icon} />
             <TextInput
               autoCorrect={false}
-              placeholder={"Código de zona"}
+              placeholder={"Nombre de usuario"}
               style={styles.logininput}
               onChangeText={(value) => setUsername(value)}
             />
@@ -63,7 +63,7 @@ const Login = () => {
             <TextInput
               autoCorrect={false}
               secureTextEntry={true} // Password input
-              placeholder={t.passwordPlaceholder}
+              placeholder={"Código de zona"}
               style={styles.logininput}
               onChangeText={(value) => setPassword(value)}
             />

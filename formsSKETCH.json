@@ -1,5 +1,6 @@
 {
     "[ID ECN 1]": {
+        "ECN": "####",
         "CFN": "####",
         "state": "None / In progress / Completed",
         "completedPages": 0,
@@ -49,6 +50,7 @@
         }
     },
     "[ID ECN 2]": {
+        "ECN": "####",
         "CFN": "####",
         "state": "None / In progress / Completed",
         "completedPages": 0,
@@ -98,6 +100,7 @@
         }
     },
     "[ID ECN 3]": {
+        "ECN": "####",
         "CFN": "####",
         "state": "None / In progress / Completed",
         "completedPages": 0,
