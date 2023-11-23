@@ -18,8 +18,9 @@ const DwellingComponent = ({ item, user }) => {
     item && (
       <View style={styles.container}>
         <View style={styles.container2}>
-          <Text style={styles.text}>{item.direction}</Text>
-          <Text style={styles.text}>{item.ECN}</Text>
+          <Text style={styles.text}>{"Dirección: " + item.direction}</Text>
+          <Text style={styles.text}>{"ECN: " + item.ECN}</Text>
+          <Text style={styles.text}>{"CFN: " + item.CFN}</Text>
         </View>
         <CheckBox
           checked={state}

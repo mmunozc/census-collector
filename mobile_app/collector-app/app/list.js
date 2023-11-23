@@ -26,12 +26,12 @@ const List = () => {
     values();
   }, []);
 
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     getDwellings(user);
-  //   }, 500);
-  //   return () => clearInterval(intervalId);
-  // }, []);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      getDwellings(user);
+    }, 500);
+    return () => clearInterval(intervalId);
+  }, [getDwellings]);
 
   const handleCreateGroup = () => router.push("/directory");
 
@@ -48,6 +48,7 @@ const List = () => {
           CFN: keys[index],
         };
       });
+      transformedData.sort((a, b) => (a.state === b.state ? 0 : a.state ? 1 : -1));
       setData(transformedData);
       //console.log("rawData", transformedData);
     }
