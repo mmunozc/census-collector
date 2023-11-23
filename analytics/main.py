@@ -3,11 +3,11 @@ from createFile import createExcel
 from createGraphs import graph
 
 def main():
+    folder = "stats"
     json_filename = "forms.json"
     data = readJson(json_filename)
-    
-    createExcel(data)
-    graph()
+    excelPath = createExcel(data, folder)
+    graph(folder, excelPath)
 
 
 
