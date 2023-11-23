@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 def graph():
     # Cargo el excel
     excel_file = 'output.xlsx'
+    sectionsSheet = 'Sections'
     adressSectionSheet = 'AdressSection'
     personSectionSheet = 'PersonSection'
     feedbackSection = 'FeedbackSection'
@@ -29,14 +30,21 @@ def graph():
         plt.axis('equal')
         plt.tight_layout()
         plt.show()
+    
 
+    def graph_Sections():
+        data_adressSection = pd.read_excel(excel_file, sheet_name=sectionsSheet)
+        columnCompletedPages = data_adressSection['Completed Pages']
+        countState = data_adressSection['State'].value_counts()
+        countCompletedPages = columnCompletedPages.value_counts()
+        barplot(countState, 'Estados de los formularios', 'Estados', 'Frecuencia')
+        barplot(countCompletedPages, 'Paginas completadas', 'Paginas', 'Frecuencia')
 
     def graph_AdressSection():
         data_adressSection = pd.read_excel(excel_file, sheet_name=adressSectionSheet)
         column_q3 = data_adressSection['Q3']
         count_column = column_q3.value_counts().sort_index()
         barplot(count_column, 'Cantidad de Personas que viven en el Hogar', 'Cantidad de Personas', 'Frecuencia')
-
 
     def graph_PersonSection():
         data_personSection = pd.read_excel(excel_file, sheet_name=personSectionSheet)
@@ -46,9 +54,6 @@ def graph():
             count_column = column.value_counts()
             pieplot(count_column, f'Person Section Q{i}')
 
-        
-
-    
     def graph_dwellingSection():
         data_personSection = pd.read_excel(excel_file, sheet_name=dwellingSection)
 
@@ -57,7 +62,6 @@ def graph():
             count_column = column.value_counts()
             pieplot(count_column, f'Dwelling Section Q{i}')
     
-
     def graph_feedbackSection():
         data_personSection = pd.read_excel(excel_file, sheet_name=feedbackSection)
 
@@ -66,8 +70,8 @@ def graph():
             count_column = column.value_counts()
             pieplot(count_column, f'Feedback Section Q{i}')
 
-
-    graph_PersonSection()
-    graph_AdressSection()
-    graph_feedbackSection()
-    graph_dwellingSection()
+    graph_Sections()
+    #graph_PersonSection()
+    #graph_AdressSection()
+    #graph_feedbackSection()
+    #graph_dwellingSection()
