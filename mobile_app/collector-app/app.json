@@ -6,7 +6,7 @@
       "favicon": "./logo.png"
     },
     "name": "CollectorApp",
-    "slug": "CollectorApp",
+    "slug": "RanchoVet",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./logo.png",
@@ -42,6 +42,6 @@
     "plugins": [
       "expo-localization"
     ],
-    "owner": "pmayav"
+    "owner": "ranchovetteam"
   }
 }

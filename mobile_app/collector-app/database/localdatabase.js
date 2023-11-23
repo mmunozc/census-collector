@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getMessages, getUser, newMessage, isFirebaseConnected } from "./firebase";
+import { GetZoneData } from './APIconection';
 
 // Save data to AsyncStorage
 const saveData = async (key, data) => {
@@ -32,34 +32,12 @@ const removeData = async (key) => {
     }
 };
 
-const fetchDataAndStoreLocally = async (user) => {
-    //console.log('User:', user);
+async function fetchDataAndStoreLocally(user) {
+    const data = await GetZoneData(user);
+    //console.log("data", data);
+    await saveData(user, data);
     // Testing, print everything in Async Storage
     //getAllAsyncStorageContents();
-    try {
-        if (await isFirebaseConnected()) {
-            // Fetch data from Firebase using getUser
-            const userData = await getUser(user);
-            await saveData(user, userData);
-            for (const chatid of Object.values(userData.chats)) {
-                const chatData = await getMessages(chatid);
-                var otherUser;
-                if (chatData.usuarios[0] == user)
-                    otherUser = chatData.usuarios[1];
-                else otherUser = chatData.usuarios[0];
-                const otherUserData = await getUser(otherUser);
-                chatData["name"] = otherUserData.name;
-                //console.log('Chat data:', chatid, chatData);
-                if (chatData.mensajes.hasOwnProperty("null"))
-                    delete chatData.mensajes["null"];
-                await saveData(chatid, chatData);
-            }
-        }
-
-        //console.log('Data fetched from Firebase:', userData);
-    } catch (error) {
-        console.error('No conection:');
-    }
 }
 
 // Function to get all AsyncStorage keys and their values
@@ -76,18 +54,5 @@ async function getAllAsyncStorageContents() {
     }
 }
 
-const sendMessage = async (chatid, contenido, user) => {
-    const message = {
-        contenido,
-        estado: "enviado",
-        hora: new Date().toLocaleTimeString(),
-        user
-    };
-    const newID = await newMessage(chatid, message);
-    const chatData = await getData(chatid);
-    chatData.mensajes[newID] = message;
-    await saveData(chatid, chatData);
-}
 
-
-export { saveData, getData, removeData, fetchDataAndStoreLocally, sendMessage };
+export { saveData, getData, removeData, fetchDataAndStoreLocally };
