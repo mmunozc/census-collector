@@ -1,5 +1,5 @@
-.dwelling-container {
-    padding-top: 200px;
+.person-container {
+    padding-top: 300px;
     padding-bottom: 70px;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@
     overflow: auto;
 }
 
-.dwelling-card {
+.person-card {
     background: white;
     padding: 2rem;
     border-radius: 20px !important;
@@ -41,7 +41,7 @@
 
 .round-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 10px;
     font-size: 16px;
     color: #212529;
     background-color: transparent;
@@ -59,8 +59,13 @@
     color: white;
 }
 
-.dwelling-container h2 {
+.person-container h2 {
     margin-bottom: 50px;
+    display: block;
+}
+
+.person-card h4 {
+    margin-bottom: 35px;
     display: block;
 }
 

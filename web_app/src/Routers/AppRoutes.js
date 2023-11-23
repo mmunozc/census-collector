@@ -8,6 +8,7 @@ import Dashboard from "../Pages/Dashboard";
 import AddressSection from "../Components/Forms/AddressSection";
 import DwellingSection from "../Components/Forms/DwellingSection";
 import FeedbackSection from "../Components/Forms/FeedbackSection";
+import PersonSection from "../Components/Forms/PersonSection";
 
 const AppRoutes = () => {
     return (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
                     <Route exact path="/address" element={<AddressSection />} />
                     <Route exact path="/dwelling" element={<DwellingSection />} />
                     <Route exact path="/feedback" element={<FeedbackSection />} />
+                    <Route exact path="/person" element={<PersonSection />} />
                 </Routes>
         </Router >
     );
