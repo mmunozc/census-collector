@@ -1,3 +1,5 @@
+import { getData } from "./localdatabase";
+
 var mainJson = {};
 
 const StartConection = async () => {
@@ -56,9 +58,13 @@ const StartConection = async () => {
     };
 }
 
-async function fetchDataFromApi(apiUrl) {
+async function fetchDataFromApi(apiUrl, token) {
     try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(apiUrl, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        });
 
         if (!response.ok) {
             throw new Error(`Failed to fetch data. Status: ${response.status}`);
@@ -72,12 +78,13 @@ async function fetchDataFromApi(apiUrl) {
     }
 }
 
-async function postDataToApi(apiUrl, content) {
+async function postDataToApi(apiUrl, token, content) {
     try {
         const response = await fetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: content,
         });
@@ -98,17 +105,19 @@ const APIurl = "myapi.com/collectors/";
 
 const GetZoneData = async (user) => {
     return mainJson[user];
-    const data = await fetchDataFromApi(APIurl + user + "/");
+    const token = await getData("token");
+    const data = await fetchDataFromApi(APIurl + user + "/", token);
     return data;
 }
 
 const SendUpdate = async (dwelling, state) => {
     mainJson[user][item.CFN].state = state;
     return;
+    const token = await getData("token");
     const content = {
         "state": state
     };
-    const response = await postDataToApi(APIurl + dwelling + "/", content);
+    const response = await postDataToApi(APIurl + dwelling + "/", token, content);
     return response;
 }
 
@@ -118,7 +127,25 @@ const ValidateUser = async (user, pass) => {
         "usuario": user,
         "password": pass,
     };
-    const token = await postDataToApi(APIurl + "login/", credentials);
+    var token;
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: content,
+        });
+
+        if (!response.ok) {
+            console.error(`Failed to fetch data. Status: ${response.status}`);
+        } else {
+            token = await response.json();
+            console.log("Received data:", data);
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error.message);
+    }
     return token;
 }
 
