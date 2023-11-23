@@ -7,6 +7,8 @@ def graph():
     excel_file = 'output.xlsx'
     adressSectionSheet = 'AdressSection'
     personSectionSheet = 'PersonSection'
+    feedbackSection = 'FeedbackSection'
+    dwellingSection = 'DwellingSection'
 
     def barplot(count_answers, title, xlabel, ylabel):
         plt.figure(figsize=(8,6))
@@ -39,6 +41,26 @@ def graph():
         count_column_q1 = column_q1.value_counts()
         pieplot(count_column_q1, 'Q1')
 
+    
+    def graph_dwellingSection():
+        data_personSection = pd.read_excel(excel_file, sheet_name=dwellingSection)
+
+        for i in range(1,10):
+            column = data_personSection[f'Q{i}']
+            count_column = column.value_counts()
+            pieplot(count_column, f'Dwelling Section Q{i}')
+    
+
+    def graph_feedbackSection():
+        data_personSection = pd.read_excel(excel_file, sheet_name=feedbackSection)
+
+        for i in range(1,3):
+            column = data_personSection[f'Q{i}']
+            count_column = column.value_counts()
+            pieplot(count_column, f'Feedback Section Q{i}')
+
 
     graph_PersonSection()
     graph_AdressSection()
+    graph_feedbackSection()
+    graph_dwellingSection()
