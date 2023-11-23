@@ -55,7 +55,6 @@ const StartConection = async () => {
         }
     };
 }
-const APIurl = "myapi.com";
 
 async function fetchDataFromApi(apiUrl) {
     try {
@@ -95,22 +94,31 @@ async function postDataToApi(apiUrl, content) {
     }
 }
 
+const APIurl = "myapi.com/collectors/";
+
 const GetZoneData = async (user) => {
     return mainJson[user];
-    const data = await fetchDataFromApi(APIurl + "/zonas/" + user + "/");
+    const data = await fetchDataFromApi(APIurl + user + "/");
+    return data;
 }
 
-const SendUpdate = async (user, item) => {
-    mainJson[user][item.CFN] = item;
-    const data = await postDataToApi(APIurl + "/" + user + "/", item);
+const SendUpdate = async (dwelling, state) => {
+    mainJson[user][item.CFN].state = state;
+    return;
+    const content = {
+        "state": state
+    };
+    const response = await postDataToApi(APIurl + dwelling + "/", content);
+    return response;
 }
 
 const ValidateUser = async (user, pass) => {
+    return mainJson.hasOwnProperty(user);
     const credentials = {
         "usuario": user,
         "password": pass,
     };
-    const token = await postDataToApi(APIurl + "/collectors/login", credentials);
+    const token = await postDataToApi(APIurl + "login/", credentials);
     return token;
 }
 
