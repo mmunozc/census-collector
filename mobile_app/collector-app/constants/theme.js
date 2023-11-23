@@ -1,10 +1,10 @@
 const COLORS = {
-  primary: "#F7EDCF",//"#F4E3B2", vainilla
-  secondary: "#EFC88B",//sunset
-  tertiary: "#CF5C36",//flame
-  fourth: "#F3DBAD",
-  background: "#FBF4E1",//cosmic latte
-  
+  primary: "#9BBEC8",//"#F4E3B2", vainilla
+  secondary: "#427D9D",//sunset
+  tertiary: "#164863",//flame
+  fourth: "#DDF2FD",
+  background: "#9BBEC8",//cosmic latte
+
 
   gray: "#D3D5D7",
   gray2: "#C1C0C8",

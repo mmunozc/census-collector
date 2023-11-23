@@ -1,5 +1,6 @@
 {
     "438525040000": {
+        "ECN": "438525040000",
         "CFN": "00000101110",
         "state": "Completed",
         "completedPages": 11,
@@ -64,6 +65,7 @@
         }
     },
     "739510630000": {
+        "ECN": "739510630000",
         "CFN": "00000201110",
         "state": "In progress",
         "completedPages": 2,
@@ -83,6 +85,7 @@
         "feedbackSection": ""
     },
     "294170420000": {
+        "ECN": "294170420000",
         "CFN": "00000301110",
         "state": "None",
         "completedPages": 0,
