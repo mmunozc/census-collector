@@ -20,10 +20,13 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const storeUsername = async (user, token) => {
+  useLayoutEffect(() => {
+    StartConection();
+  }, []);
+
+  const storeUsername = async (user) => {
     try {
       await AsyncStorage.setItem("username", user);
-      await AsyncStorage.setItem("token", token);
       router.push("/list");
     } catch (e) {
       console.error("Error al guardar el usuario");
@@ -31,29 +34,14 @@ const Login = () => {
   };
 
   const handleSignIn = async () => {
-    const token = await ValidateUser(username, password);
-    if (token) {
+    if (await ValidateUser(username, password)) {
       //console.log("user", username);
-      storeUsername(username, token);
+      setError("");
+      storeUsername(username);
     } else {
       setError("Usuario o contraseña equivocados"); // Set error message
     }
   };
-
-  useLayoutEffect(() => {
-    const getUsername = async () => {
-      try {
-        const user = await AsyncStorage.getItem("username");
-        if (user !== null) {
-          router.push("/list");
-        }
-      } catch (e) {
-        console.error(t.errorLoadingUser);
-      }
-    };
-    StartConection();
-    //getUsername();
-  }, []);
 
   return (
     <SafeAreaView style={styles.loginscreen}>

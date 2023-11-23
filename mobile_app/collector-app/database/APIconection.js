@@ -1,5 +1,4 @@
-import { getData } from "./localdatabase";
-
+import { getData, saveData } from "./localdatabase";
 var mainJson = {};
 
 const StartConection = async () => {
@@ -67,7 +66,13 @@ async function fetchDataFromApi(apiUrl, token) {
         });
 
         if (!response.ok) {
-            throw new Error(`Failed to fetch data. Status: ${response.status}`);
+            if (response.status === 401) {
+                console.error('Refresh Tokens.');
+                await RefreshTokens();
+                return await fetchDataFromApi(apiUrl, token);
+            } else {
+                console.error(`Failed to fetch data. Status: ${response.status}`);
+            }
         }
 
         const data = await response.json();
@@ -90,7 +95,13 @@ async function postDataToApi(apiUrl, token, content) {
         });
 
         if (!response.ok) {
-            throw new Error(`Failed to fetch data. Status: ${response.status}`);
+            if (response.status === 401) {
+                console.error('Refresh Tokens.');
+                await RefreshTokens();
+                return await postDataToApi(apiUrl, token, content);
+            } else {
+                console.error(`Failed to fetch data. Status: ${response.status}`);
+            }
         }
 
         const data = await response.json();
@@ -105,7 +116,7 @@ const APIurl = "myapi.com/collectors/";
 
 const GetZoneData = async (user) => {
     return mainJson[user];
-    const token = await getData("token");
+    const token = await getData("accessToken");
     const data = await fetchDataFromApi(APIurl + user + "/", token);
     return data;
 }
@@ -113,7 +124,7 @@ const GetZoneData = async (user) => {
 const SendUpdate = async (dwelling, state) => {
     mainJson[user][item.CFN].state = state;
     return;
-    const token = await getData("token");
+    const token = await getData("accessToken");
     const content = {
         "state": state
     };
@@ -127,9 +138,8 @@ const ValidateUser = async (user, pass) => {
         "usuario": user,
         "password": pass,
     };
-    var token;
     try {
-        const response = await fetch(apiUrl, {
+        const response = await fetch(APIurl + "login/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -140,13 +150,29 @@ const ValidateUser = async (user, pass) => {
         if (!response.ok) {
             console.error(`Failed to fetch data. Status: ${response.status}`);
         } else {
-            token = await response.json();
-            console.log("Received data:", data);
+            const response = await response.json();
+            console.log("Received data:", response);
+            const accessToken = response.accessToken;
+            const refreshToken = response.refreshToken;
+            await saveData("accessToken", accessToken);
+            await saveData("refreshToken", refreshToken);
+            return true;
         }
     } catch (error) {
         console.error('Error fetching data:', error.message);
     }
-    return token;
+}
+
+const RefreshTokens = async () => {
+    const token = await getData("refreshToken");
+    const content = {
+        "token": token
+    };
+    const response = await postDataToApi(APIurl + "refreshToken/", token, content);
+    const accessToken = response.accessToken;
+    const refreshToken = response.refreshToken;
+    await saveData("accessToken", accessToken);
+    await saveData("refreshToken", refreshToken);
 }
 
 export { GetZoneData, ValidateUser, SendUpdate, StartConection };
