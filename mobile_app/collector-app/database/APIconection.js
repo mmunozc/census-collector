@@ -1,7 +1,9 @@
 import { getData, saveData } from "./localdatabase";
 var mainJson = {};
+var APIurl = "";
 
 const StartConection = async () => {
+    APIurl = "http://26c3-2800-e2-c680-29d0-50ff-cec-760a-83a.ngrok.io/";
     mainJson = {
         "050000111": {
             "00000101110": {
@@ -112,18 +114,14 @@ async function postDataToApi(apiUrl, token, content) {
     }
 }
 
-const APIurl = "myapi.com/collectors/";
 
 const GetZoneData = async (user) => {
-    return mainJson[user];
     const token = await getData("accessToken");
     const data = await fetchDataFromApi(APIurl + user + "/", token);
     return data;
 }
 
 const SendUpdate = async (user, CFN, state) => {
-    mainJson[user][CFN].state = state;
-    return;
     const token = await getData("accessToken");
     const content = {
         "state": state
@@ -133,7 +131,6 @@ const SendUpdate = async (user, CFN, state) => {
 }
 
 const ValidateUser = async (user, pass) => {
-    return mainJson.hasOwnProperty(user);
     const credentials = {
         "usuario": user,
         "password": pass,
@@ -144,7 +141,7 @@ const ValidateUser = async (user, pass) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: content,
+            body: credentials,
         });
 
         if (!response.ok) {
