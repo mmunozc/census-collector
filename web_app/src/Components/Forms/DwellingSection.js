@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './DwellingSection.css';
 import { useNavigate } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
+import { dwellingPages } from '../../utils/questions';
 
 const DwellingSection = ({ onNext }) => {
     let navigate = useNavigate();
@@ -15,57 +16,7 @@ const DwellingSection = ({ onNext }) => {
         navigate('/dashboard');
     }
 
-    const pages = [
-        {
-            key: 1,
-            questions: [
-                {
-                    key: 'question1',
-                    text: 'Type of dwelling',
-                },
-                {
-                    key: 'question2',
-                    text: 'Tenure',
-                },
-                {
-                    key: 'question3',
-                    text: 'Length of residence',
-                }, {
-                    key: 'question4',
-                    text: 'Number of rooms',
-                }, {
-                    key: 'question5',
-                    text: 'Basic utilities',
-                },
-                {
-                    key: 'question6',
-                    text: 'Housing conditions',
-                }
-            ],
-        },
-        {
-            key: 2,
-            questions: [
-                {
-                    key: 'question7',
-                    text: 'Occupancy',
-                },
-                {
-                    key: 'question8',
-                    text: 'Housing expenses',
-                },                
-                {
-                    key: 'question9',
-                    text: 'Heating and cooling systems',
-                },
-                {
-                    key: 'question10',
-                    text: 'Internet access',
-                }
-            ],
-        },
-    ];
-
+    const pages = dwellingPages;
     const itemsPerPage = 1;
     const offset = currentPage * itemsPerPage;
     const currentPageData = pages[offset];
