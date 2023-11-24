@@ -37,7 +37,7 @@ const Login = () => {
     if (await ValidateUser(username, password)) {
       //console.log("user", username);
       setError("");
-      storeUsername(username);
+      storeUsername(password);
     } else {
       setError("Usuario o contraseña equivocados"); // Set error message
     }
