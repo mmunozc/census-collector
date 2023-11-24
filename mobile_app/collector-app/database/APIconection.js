@@ -3,7 +3,7 @@ var mainJson = {};
 var APIurl = "";
 
 const StartConection = async () => {
-    APIurl = "http://26c3-2800-e2-c680-29d0-50ff-cec-760a-83a.ngrok.io/";
+    APIurl = "https://vj0bqk5t-4000.use2.devtunnels.ms/";
     mainJson = {
         "050000111": {
             "00000101110": {
@@ -136,7 +136,7 @@ const ValidateUser = async (user, pass) => {
         "password": pass,
     };
     try {
-        const response = await fetch(APIurl + "login/", {
+        const response = await fetch(APIurl + "dwellings/login/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
