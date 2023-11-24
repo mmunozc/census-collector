@@ -63,10 +63,9 @@ def createExcel(data, folder):
         if value.get("dwellingSection"):
             dwelling_section_values_list = [value["CFN"]]
             dwelling_section_values = value["dwellingSection"].values()
-            for page in dwelling_section_values:
-                for question in page.values():
-                    dwellingSize += 1
-                    dwelling_section_values_list.append(question)
+            for question in dwelling_section_values:
+                dwellingSize += 1
+                dwelling_section_values_list.append(question)
             dwellingSectionSheet.append(dwelling_section_values_list)
 
         if value.get("feedbackSection"):
