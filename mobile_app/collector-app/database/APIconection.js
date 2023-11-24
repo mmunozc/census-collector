@@ -136,7 +136,7 @@ const ValidateUser = async (user, pass) => {
         "password": pass,
     };
     try {
-        const response = await fetch(APIurl + "dwellings/login/", {
+        const response = await fetch(APIurl + "collectors/login", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
