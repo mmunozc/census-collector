@@ -1,3 +1,4 @@
 /build/
 forms.json
 *.spec
+.gitignore
