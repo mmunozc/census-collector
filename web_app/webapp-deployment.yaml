@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-census
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp-census
+  template:
+    metadata:
+      labels:
+        app: webapp-census
+    spec:
+      containers:
+      - name: webapp-census
+        image: hobarlan/ecs:1
+        ports:
+        - containerPort: 80
+        env:
+        - name: REACT_APP_BACKEND_URL
+          value: "https://vj0bqk5t-4000.use2.devtunnels.ms"
