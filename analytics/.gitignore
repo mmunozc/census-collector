@@ -1,0 +1,4 @@
+/build/
+forms2.json
+*.spec
+.gitignore

@@ -47,16 +47,9 @@
             }
         },
         "dwellingSection": {
-            "Page1": {
-                "Q1": "Casa",
-                "Q2": "Apartamento",
-                "Q3": "Gatos"
-            },
-            "Page2": {
-                "Q4": "Casa",
-                "Q5": "Apartamento",
-                "Q6": "Gatos"
-            }
+            "Q1": "Casa",
+            "Q2": "Apartamento",
+            "Q3": "Gatos"
         },
         "feedbackSection": {
             "Q1": "Muy entendible",
